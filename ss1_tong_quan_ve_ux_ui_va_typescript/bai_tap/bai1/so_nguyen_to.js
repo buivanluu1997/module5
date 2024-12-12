@@ -19,7 +19,7 @@ console.log(isPrime(4));
 
 // 2. Cho 1 mảng số nguyên. Sử dụng filter để lọc ra các số là số nguyên tố
 let array = [1, 2, 3, 4, 5, 6];
-let filterIsPrime = (arr) => arr.filter(isPrime);
+let filterIsPrime = (arr) => arr.filter((num) => isPrime(num));
 let newArr = filterIsPrime(array);
 console.log("Các số nguyên tố trong mảng: " + array + " đã lọc là: ")
 console.log(newArr);

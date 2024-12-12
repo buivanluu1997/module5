@@ -68,6 +68,6 @@ console.log("Danh sách có bài đăng rating < 4 và theo định dạng <id> 
 console.log(formatCourses2);
 
 //Yêu cầu 3: Sử dụng cú pháp ES6 đã học viết hàm trả về một mảng mới gộp 2 mảng courses và addedCourses
-console.log("Mảng mới gộp 2 mảng courses và addedCourses");
 let newCourses = [...courses, ...addedCourses];
+console.log("Mảng mới gộp 2 mảng courses và addedCourses");
 console.log(newCourses);
