@@ -34,7 +34,7 @@ class Todo extends React.Component {
                     this.changeIsLoading()
                 }}/>
 
-                <table>
+                <table  className="table table-striped table-bordered table-hover">
                     <thead>
                     <tr>
                         <th>STT</th>

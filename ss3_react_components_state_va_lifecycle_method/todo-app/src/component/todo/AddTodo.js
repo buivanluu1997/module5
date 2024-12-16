@@ -25,13 +25,13 @@ class AddTodo extends React.Component {
     handleSubmit(){
         addTodo(this.state.Todo);
         this.props.changeIsLoading();
-        
+
     }
 
     render() {
         return(
             <>
-                <h1>Thêm công việc</h1>
+                <h3>Thêm công việc</h3>
                 <input name={'id'} onChange={(e) =>(
                     this.handleOnChange(e)
                 )} placeholder={'Nhập vào id'}/>
