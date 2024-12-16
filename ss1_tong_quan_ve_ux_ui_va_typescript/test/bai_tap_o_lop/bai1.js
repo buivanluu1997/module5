@@ -56,7 +56,7 @@ console.log(filterCourses);
 let filterCourses2 = courses.filter((course) =>{
     return course.rating < 4;
 })
-let formatCourses = (course) => {
+let formatCourses = course => {
     return `${course.id} - ${course.title} - ${course.rating}`;
 }
 let result = filterCourses2.map(formatCourses);
