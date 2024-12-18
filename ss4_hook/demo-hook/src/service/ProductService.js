@@ -1,4 +1,4 @@
-const listProduct = [{id: 1, name: "IPhone 15", brand: "Apple"},
+export const listProduct = [{id: 1, name: "IPhone 15", brand: "Apple"},
     {id: 2, name: "SamSung S21", brand: "SamSung"},
     {id: 3, name: "Oppo A7", brand: "Oppo"}];
 
@@ -19,6 +19,14 @@ export function deleteProductById(id){
         if (listProduct[i].id === id){
             listProduct.splice(i, 1);
             break;
+        }
+    }
+}
+
+export function detailProductById(id){
+    for (let i = 0; i < listProduct.length; i++) {
+        if (listProduct[i].id === id){
+            return listProduct[i];
         }
     }
 }

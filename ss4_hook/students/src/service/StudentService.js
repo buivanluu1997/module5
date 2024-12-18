@@ -21,3 +21,10 @@ export function deleteStudentById(id){
         }
     }
 }
+export function studentFindById(id){
+    for (let i = 0; i < listStudent.length; i++) {
+        if (listStudent[i].id === id){
+            return listStudent[i];
+        }
+    }
+}

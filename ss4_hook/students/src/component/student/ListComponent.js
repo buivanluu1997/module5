@@ -1,7 +1,8 @@
 import React, {useEffect, useRef, useState} from "react";
 import {getAllStudent, searchStudent} from "../../service/StudentService";
-import AddComponent from "./AddComponent";
 import DeleteStudent from "./DeleteStudent";
+import {Link} from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css'
 
 function ListComponent() {
 
@@ -16,6 +17,7 @@ function ListComponent() {
             )
         )
     }, [isLoading])
+
 
     const handleIsLoading = () => (
         setIsLoading(prevState => !prevState)
@@ -45,7 +47,9 @@ function ListComponent() {
         <>
             <h1>Danh sách học sinh</h1>
 
-            <AddComponent handleIsLoading={handleIsLoading}/>
+            <p>
+                <Link to={"/add"}>Thêm học sinh</Link>
+            </p>
 
             <form>
                 <input ref={nameRef} placeholder={'Nhập tên cần tìm'}/>
@@ -60,6 +64,7 @@ function ListComponent() {
                     <th>Tên học sinh</th>
                     <th>Tuổi</th>
                     <th>Xoá</th>
+                    <th>Chi tiết</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -73,6 +78,9 @@ function ListComponent() {
                             <td>
                                 <button onClick={() => (
                                     handleShowModal(student))} className={'btn btn-sm btn-danger'}>Xoá</button>
+                            </td>
+                            <td>
+                                <Link to={`/detail/${student.id}`} className="btn btn-sm btn-success">Chi tiết</Link>
                             </td>
                         </tr>
                     ))
