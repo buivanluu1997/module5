@@ -4,8 +4,8 @@ import {studentFindById} from "../../service/StudentService";
 
 function DetailComponent(){
     const {id} = useParams();
-    const studentId = parseInt(id)
-    const student = studentFindById(studentId);
+
+    const student = studentFindById(id);
 
     return(
         <>

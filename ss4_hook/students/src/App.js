@@ -8,6 +8,7 @@ import AddComponent from "./component/student/AddComponent";
 import DetailComponent from "./component/student/DetailComponent";
 import {ToastContainer} from "react-toastify";
 import React from "react";
+import EditComponent from "./component/student/EditComponent";
 
 function App() {
     return (
@@ -15,9 +16,12 @@ function App() {
             <HeaderComponent/>
             <ToastContainer position="top-right" autoClose={1000}/>
             <Routes>
-                <Route path={"/"} element={<ListComponent/>}/>
-                <Route path={"/add"} element={<AddComponent/>}/>
-                <Route path={"/detail/:id"} element={<DetailComponent/>}/>
+                <Route path={"/students"} element={<ListComponent/>}>
+                    <Route path={"detail/:id"} element={<DetailComponent/>}/>
+                </Route>
+                <Route path={"/students/add"} element={<AddComponent/>}/>
+
+                <Route path={"/students/edit/:id"} element={<EditComponent/>}/>s
             </Routes>
         </>
     );

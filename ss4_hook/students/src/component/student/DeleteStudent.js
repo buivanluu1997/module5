@@ -10,7 +10,8 @@ function DeleteStudent({isShowModal, deleteStudent, handleCloseModal, handleIsLo
     }
 
     return (
-        isShowModal&&<div className="modal" tabIndex="-1" style={{display:'block'}}>
+        <>
+            {isShowModal&&<div className="modal" tabIndex="-1" style={{display:'block'}}>
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -27,6 +28,9 @@ function DeleteStudent({isShowModal, deleteStudent, handleCloseModal, handleIsLo
                 </div>
             </div>
         </div>
+            }
+        </>
+
     );
 }
 

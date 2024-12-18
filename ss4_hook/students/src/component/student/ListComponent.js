@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {getAllStudent, searchStudent} from "../../service/StudentService";
 import DeleteStudent from "./DeleteStudent";
-import {Link} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css'
 
 function ListComponent() {
@@ -48,7 +48,7 @@ function ListComponent() {
             <h1>Danh sách học sinh</h1>
 
             <p>
-                <Link to={"/add"}>Thêm học sinh</Link>
+                <Link to={"/students/add"}>Thêm học sinh</Link>
             </p>
 
             <form>
@@ -65,6 +65,7 @@ function ListComponent() {
                     <th>Tuổi</th>
                     <th>Xoá</th>
                     <th>Chi tiết</th>
+                    <th>Sửa</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -77,16 +78,23 @@ function ListComponent() {
                             <td>{student.age}</td>
                             <td>
                                 <button onClick={() => (
-                                    handleShowModal(student))} className={'btn btn-sm btn-danger'}>Xoá</button>
+                                    handleShowModal(student))} className={'btn btn-sm btn-danger'}>Xoá
+                                </button>
                             </td>
                             <td>
-                                <Link to={`/detail/${student.id}`} className="btn btn-sm btn-success">Chi tiết</Link>
+                                <Link to={`/students/detail/${student.id}`} className="btn btn-sm btn-success">Chi tiết</Link>
+                            </td>
+                            <td>
+                                <Link to={`/students/edit/${student.id}`} className="btn btn-sm btn-primary">Sửa</Link>
                             </td>
                         </tr>
                     ))
                 }
                 </tbody>
             </table>
+
+            <Outlet/>
+
             <DeleteStudent isShowModal={isShowModal} deleteStudent={deleteStudent}
                            handleCloseModal={handleCloseModal}  handleIsLoading={handleIsLoading}/>
         </>

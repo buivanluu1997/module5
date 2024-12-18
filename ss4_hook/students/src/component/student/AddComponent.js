@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {addStudent} from "../../service/StudentService";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {useNavigate} from "react-router-dom";
@@ -31,7 +31,11 @@ function AddComponent(){
             .min(1, "Tuổi phải lớn hơn hoặc bằng 1")
             .integer("Tuổi phải là số nguyên")
     });
-
+    useEffect(() => {
+        return()=>{
+            console.log("-------------add----------------------")
+        }
+    }, []);
 
     return(
         <>

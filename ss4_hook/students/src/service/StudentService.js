@@ -23,8 +23,16 @@ export function deleteStudentById(id){
 }
 export function studentFindById(id){
     for (let i = 0; i < listStudent.length; i++) {
-        if (listStudent[i].id === id){
+        if (listStudent[i].id == id){
             return listStudent[i];
+        }
+    }
+}
+export function editStudent(student){
+    for (let i = 0; i < listStudent.length; i++) {
+        if (listStudent[i].id == student.id){
+            listStudent[i] = student;
+            break;
         }
     }
 }
