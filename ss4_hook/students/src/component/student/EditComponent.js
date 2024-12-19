@@ -6,19 +6,20 @@ import {toast} from "react-toastify";
 
 function EditComponent() {
     const {id} = useParams();
-    const studentId = parseInt(id);
+
     const [student, setStudent] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const student1 = studentFindById(studentId);
-        setStudent(() => (
-            {...student1}
-        ))
+    useEffect( () => {
+        const fetchData = async () => {
+            let studentDetail = await studentFindById(id);
+            setStudent(studentDetail);
+        }
+        fetchData();
     }, [])
 
-    const handleSubmit = (value) => {
-        editStudent(value);
+    const handleSubmit = async (value) => {
+        await editStudent(value);
         toast.success("Đã cập nhật thành công")
         navigate("/students")
     }

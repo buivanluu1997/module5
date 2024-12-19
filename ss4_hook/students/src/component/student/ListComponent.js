@@ -12,10 +12,11 @@ function ListComponent() {
     const [deleteStudent, setDeleteStudent] = useState({});
 
     useEffect(() => {
-        setListStudent((prevState) => (
-                [...getAllStudent()]
-            )
-        )
+        const fetchData = async () => {
+            const list = await getAllStudent();
+            setListStudent(list);
+        }
+        fetchData();
     }, [isLoading])
 
 
@@ -24,9 +25,9 @@ function ListComponent() {
     )
 
     const nameRef = useRef();
-    const handleSearchName = () => {
+    const handleSearchName = async () => {
         const searchName = nameRef.current.value;
-        const searchListName = searchStudent(searchName);
+        const searchListName = await searchStudent(searchName);
         setListStudent(() => (
             [...searchListName]
         ))
@@ -63,6 +64,7 @@ function ListComponent() {
                     <th>ID</th>
                     <th>Tên học sinh</th>
                     <th>Tuổi</th>
+                    <th>Lớp học</th>
                     <th>Xoá</th>
                     <th>Chi tiết</th>
                     <th>Sửa</th>
@@ -76,16 +78,17 @@ function ListComponent() {
                             <td>{student.id}</td>
                             <td>{student.name}</td>
                             <td>{student.age}</td>
+                            <td>{student.classes.name}</td>
                             <td>
                                 <button onClick={() => (
                                     handleShowModal(student))} className={'btn btn-sm btn-danger'}>Xoá
                                 </button>
                             </td>
                             <td>
-                                <Link to={`/students/detail/${student.id}`} className="btn btn-sm btn-success">Chi tiết</Link>
+                                <Link to={'/students/detail/'+student.id} className="btn btn-sm btn-success">Chi tiết</Link>
                             </td>
                             <td>
-                                <Link to={`/students/edit/${student.id}`} className="btn btn-sm btn-primary">Sửa</Link>
+                                <Link to={'/students/edit/'+student.id} className="btn btn-sm btn-primary">Sửa</Link>
                             </td>
                         </tr>
                     ))

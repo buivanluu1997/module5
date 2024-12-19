@@ -3,10 +3,10 @@ import {deleteStudentById} from "../../service/StudentService";
 
 function DeleteStudent({isShowModal, deleteStudent, handleCloseModal, handleIsLoading}){
 
-    const handleDeleteStudent = () => {
-        deleteStudentById(deleteStudent.id);
+    const handleDeleteStudent = async () => {
+        await deleteStudentById(deleteStudent.id);
         handleIsLoading();
-        handleCloseModal(); 
+        handleCloseModal();
     }
 
     return (

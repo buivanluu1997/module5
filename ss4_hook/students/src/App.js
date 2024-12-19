@@ -16,12 +16,13 @@ function App() {
             <HeaderComponent/>
             <ToastContainer position="top-right" autoClose={1000}/>
             <Routes>
-                <Route path={"/students"} element={<ListComponent/>}>
-                    <Route path={"detail/:id"} element={<DetailComponent/>}/>
-                </Route>
+                <Route path={"/students"} element={<ListComponent/>}/>
+
                 <Route path={"/students/add"} element={<AddComponent/>}/>
 
-                <Route path={"/students/edit/:id"} element={<EditComponent/>}/>s
+                <Route path={"/students/edit/:id"} element={<EditComponent/>}/>
+
+                <Route path={"/students/detail/:id"} element={<DetailComponent/>}/>
             </Routes>
         </>
     );

@@ -1,0 +1,49 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Nguyen Van Dung Anh",
+      "age": "28",
+      "classes": {
+        "id": 1,
+        "name": "12A1"
+      }
+    },
+    {
+      "name": "Ho Quang Hieu",
+      "age": 17,
+      "id": 2,
+      "classes": {
+        "id": 2,
+        "name": "12A2"
+      }
+    },
+    {
+      "name": "Tran Tuan Phuc",
+      "age": 17,
+      "classes": {
+        "id": 2,
+        "name": "12A2"
+      },
+      "id": 3
+    }
+  ],
+  "classes": [
+    {
+      "id": 1,
+      "name": "12A1"
+    },
+    {
+      "id": 2,
+      "name": "12A2"
+    },
+    {
+      "id": 3,
+      "name": "12A3"
+    },
+    {
+      "id": 4,
+      "name": "12A4"
+    }
+  ]
+}

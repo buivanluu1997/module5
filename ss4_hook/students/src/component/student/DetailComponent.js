@@ -1,13 +1,20 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {studentFindById} from "../../service/StudentService";
 
-function DetailComponent(){
+function DetailComponent() {
+    const [student, setStudent] = useState({id: "", name: "", age: ""});
     const {id} = useParams();
 
-    const student = studentFindById(id);
+    useEffect(() => {
+        const fetchData = async () => {
+            let studentDetail = await studentFindById(id);
+            setStudent(studentDetail);
+        }
+        fetchData();
+    }, [])
 
-    return(
+    return (
         <>
             <h2>Chi tiết sản phẩm</h2>
             <label>Id:</label>
@@ -19,4 +26,5 @@ function DetailComponent(){
         </>
     );
 }
+
 export default DetailComponent;

@@ -1,38 +1,71 @@
+import axios from "axios";
+
 const listStudent = [{id: 1, name: "Nguyen Van Trung", age: "18"},
     {id: 2, name: "Hoang Ngoc Huy", age: "17"},
     {id: 3, name: "Tran Trong Hoang", age: "18"}];
 
-export function getAllStudent(){
-    return listStudent;
-}
-export function addStudent(student){
-    listStudent.push(student);
-}
-export function searchStudent(name){
-    return listStudent.filter((student) => (
-        student.name.toLowerCase().includes(name.toLowerCase())
-    ))
-}
-export function deleteStudentById(id){
-    for (let i = 0; i < listStudent.length; i++) {
-        if (listStudent[i].id === id){
-            listStudent.splice(i, 1);
-            break;
-        }
+export async function getAllStudent() {
+    //gọi API
+    try {
+        const response = await axios.get("http://localhost:8080/students");
+        console.log(response);
+        return response.data;
+    } catch (e) {
+        console.log("Lỗi: " + e.message);
+        return [];
     }
 }
-export function studentFindById(id){
-    for (let i = 0; i < listStudent.length; i++) {
-        if (listStudent[i].id == id){
-            return listStudent[i];
-        }
+
+export async function addStudent(student) {
+    //gọi API
+    try {
+        const response = await axios.post("http://localhost:8080/students", student);
+        console.log("-----------Service thêm mới---------------");
+    } catch (e) {
+        console.log("Lỗi: " + e.message);
     }
 }
-export function editStudent(student){
-    for (let i = 0; i < listStudent.length; i++) {
-        if (listStudent[i].id == student.id){
-            listStudent[i] = student;
-            break;
-        }
+
+export async function searchStudent(name) {
+    try {
+        const response = await axios.get("http://localhost:8080/students", {params: {name: name}});
+        console.log(response);
+        return response.data;
+    } catch (e) {
+        console.log("Lỗi: " + e.message);
+        return [];
+    }
+}
+
+export async function deleteStudentById(id) {
+    //gọi API
+    try {
+        const response = await axios.delete("http://localhost:8080/students/"+id);
+        console.log(response);
+        return response.data;
+    } catch (e) {
+        console.log("Lỗi: " + e.message);
+        return null;
+    }
+}
+
+export async function studentFindById(id) {
+    try {
+        const response = await axios.get("http://localhost:8080/students/" + id);
+        console.log(response);
+        return response.data;
+    } catch (e) {
+        console.log("Lỗi: " + e.message);
+        return null;
+    }
+}
+
+export async function editStudent(student) {
+    try {
+        const response = await axios.put("http://localhost:8080/students/"+student.id, student);
+        console.log(response);
+        return response.data;
+    } catch (e) {
+        console.log("Lỗi: " + e.message);
     }
 }
