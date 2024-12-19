@@ -13,13 +13,24 @@ function ListComponent() {
     const [deleteStudent, setDeleteStudent] = useState({});
     const [classes, setClasses] = useState([]);
 
+    const nameRef = useRef();
+    const classIdRef = useRef();
+
+    const [page, setPage] = useState(1);
+    const [size, setSize] = useState(2);
+    const [totalPage, setTotalPage] = useState(0);
+
+
     useEffect(() => {
         const fetchData = async () => {
-            const list = await getAllStudent();
-            setListStudent(list);
+            const searchName = nameRef.current.value;
+            const classId = classIdRef.current.value;
+            const {data,total} = await searchStudent(searchName, classId, page, size);
+            setListStudent(data);
+            setTotalPage(Math.ceil(total/size));
         }
         fetchData();
-    }, [isLoading])
+    }, [isLoading, page])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,15 +44,13 @@ function ListComponent() {
         setIsLoading(prevState => !prevState)
     )
 
-    const nameRef = useRef();
-    const classIdRef = useRef();
+
     const handleSearchName = async () => {
         const searchName = nameRef.current.value;
         const classId = classIdRef.current.value;
-        const searchListName = await searchStudent(searchName, classId);
-        setListStudent(() => (
-            [...searchListName]
-        ))
+        const {data,total} = await searchStudent(searchName, classId, page, size);
+        setListStudent(data);
+        setTotalPage(Math.ceil(total/size));
     }
 
     const handleShowModal = (student) => {
@@ -54,6 +63,13 @@ function ListComponent() {
     const handleCloseModal = () => {
         setIsShowModal(prevState => !prevState)
     }
+
+    const handlePageChange = (page) => {
+        if (page > 0 && page <= totalPage) {
+            setPage(page);
+        }
+    };
+
 
     return (
         <>
@@ -117,8 +133,26 @@ function ListComponent() {
                 </tbody>
             </table>
 
+
+            {/* Phân trang */}
+            <div className="pagination">
+                <button className="btn btn-sm btn-secondary" disabled={page === 1} onClick={() => handlePageChange(page - 1)}>Previous</button>
+                {[...Array(totalPage)].map((_, index) => (
+                    <button
+                        key={index + 1}
+                        className={`btn ${page === index + 1 ? "btn-sm btn-primary" : "btn-sm btn-outline-primary"}`}
+                        onClick={() => handlePageChange(index + 1)}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
+                <button className="btn btn-sm btn-secondary" disabled={page === totalPage} onClick={() => handlePageChange(page + 1)}>Next</button>
+            </div>
+
+
             <DeleteStudent isShowModal={isShowModal} deleteStudent={deleteStudent}
                            handleCloseModal={handleCloseModal}  handleIsLoading={handleIsLoading}/>
+
         </>
     )
 }
