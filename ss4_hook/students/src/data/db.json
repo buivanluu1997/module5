@@ -1,15 +1,6 @@
 {
   "students": [
     {
-      "id": 1,
-      "name": "Nguyen Van Dung Anh",
-      "age": "28",
-      "classes": {
-        "id": 1,
-        "name": "12A1"
-      }
-    },
-    {
       "name": "Ho Quang Hieu",
       "age": 17,
       "id": 2,
@@ -26,6 +17,24 @@
         "name": "12A2"
       },
       "id": 3
+    },
+    {
+      "name": "Nguyen An",
+      "age": 17,
+      "classes": {
+        "id": 4,
+        "name": "12A4"
+      },
+      "id": 4
+    },
+    {
+      "name": "Bùi Văn Lưu",
+      "age": 20,
+      "classes": {
+        "id": 2,
+        "name": "12A2"
+      },
+      "id": 5
     }
   ],
   "classes": [

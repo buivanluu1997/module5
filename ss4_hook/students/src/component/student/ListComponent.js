@@ -3,6 +3,7 @@ import {getAllStudent, searchStudent} from "../../service/StudentService";
 import DeleteStudent from "./DeleteStudent";
 import {Link, Outlet} from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css'
+import {getAllClasses} from "../../service/ClassesService";
 
 function ListComponent() {
 
@@ -10,6 +11,7 @@ function ListComponent() {
     const [isLoading, setIsLoading] = useState(false);
     const [isShowModal, setIsShowModal] = useState(false);
     const [deleteStudent, setDeleteStudent] = useState({});
+    const [classes, setClasses] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -19,15 +21,24 @@ function ListComponent() {
         fetchData();
     }, [isLoading])
 
+    useEffect(() => {
+        const fetchData = async () => {
+            let list = await getAllClasses();
+            setClasses(list)
+        }
+        fetchData();
+    }, []);
 
     const handleIsLoading = () => (
         setIsLoading(prevState => !prevState)
     )
 
     const nameRef = useRef();
+    const classIdRef = useRef();
     const handleSearchName = async () => {
         const searchName = nameRef.current.value;
-        const searchListName = await searchStudent(searchName);
+        const classId = classIdRef.current.value;
+        const searchListName = await searchStudent(searchName, classId);
         setListStudent(() => (
             [...searchListName]
         ))
@@ -53,8 +64,18 @@ function ListComponent() {
             </p>
 
             <form>
+                <label>Tên:</label>
                 <input ref={nameRef} placeholder={'Nhập tên cần tìm'}/>
-                <button type={"button"} onClick={handleSearchName}>Tìm kiếm</button>
+                <label>Lớp</label>
+                <select ref={classIdRef}>
+                    <option  value={""}>----Chọn-----</option>
+                    {
+                        classes.map((clas) => (
+                            <option key={clas.id} value={clas.id}>{clas.name}</option>
+                        ))
+                    }
+                </select>
+                <button className={'btn btn-sm btn-secondary'} type={"button"} onClick={handleSearchName}>Tìm kiếm</button>
             </form>
 
             <table className="table table-striped table-bordered table-hover">
@@ -95,8 +116,6 @@ function ListComponent() {
                 }
                 </tbody>
             </table>
-
-            <Outlet/>
 
             <DeleteStudent isShowModal={isShowModal} deleteStudent={deleteStudent}
                            handleCloseModal={handleCloseModal}  handleIsLoading={handleIsLoading}/>

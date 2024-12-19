@@ -6,5 +6,6 @@ export async function getAllClasses() {
         return response.data;
     } catch (e) {
         console.log("Lỗi: " + e.message)
+        return [];
     }
 }
