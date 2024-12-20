@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {Field, Form, Formik} from "formik";
-import {editStudent, studentFindById} from "../../service/StudentService";
+import {editStudent, studentFindById} from "../../service/studentService";
 import {toast} from "react-toastify";
-import {getAllClasses} from "../../service/ClassesService";
+import {getAllClasses} from "../../service/classesService";
 
 function EditComponent() {
     const {id} = useParams();
@@ -64,6 +64,7 @@ function EditComponent() {
                     <div>
                         <label>Lớp:</label>
                         <Field as ='select' name={'classes'}>
+                            <option value="">---------chọn---------</option>
                             {
                                 classes.map((clas) => (
                                     <option key={clas.id} value={JSON.stringify(clas)}>{clas.name}</option>

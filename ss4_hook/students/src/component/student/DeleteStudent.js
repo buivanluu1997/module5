@@ -1,5 +1,5 @@
 import React from "react";
-import {deleteStudentById} from "../../service/StudentService";
+import {deleteStudentById} from "../../service/studentService";
 
 function DeleteStudent({isShowModal, deleteStudent, handleCloseModal, handleIsLoading}){
 

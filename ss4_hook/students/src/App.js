@@ -9,6 +9,8 @@ import DetailComponent from "./component/student/DetailComponent";
 import {ToastContainer} from "react-toastify";
 import React from "react";
 import EditComponent from "./component/student/EditComponent";
+import LoginComponent from "./component/student/LoginComponent";
+import HomeComponent from "./component/student/HomeComponent";
 
 function App() {
     return (
@@ -18,11 +20,15 @@ function App() {
             <Routes>
                 <Route path={"/students"} element={<ListComponent/>}/>
 
+                <Route path={"/login"} element={<LoginComponent/>}/>
+
                 <Route path={"/students/add"} element={<AddComponent/>}/>
 
                 <Route path={"/students/edit/:id"} element={<EditComponent/>}/>
 
                 <Route path={"/students/detail/:id"} element={<DetailComponent/>}/>
+
+                <Route path={"/home"} element={<HomeComponent/>}/>
             </Routes>
         </>
     );

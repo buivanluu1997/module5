@@ -1,10 +1,10 @@
 import React, {useEffect, useRef, useState} from "react";
-import {addStudent} from "../../service/StudentService";
+import {addStudent} from "../../service/studentService";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {useNavigate} from "react-router-dom";
 import * as Yup from "yup";
 import {toast} from "react-toastify";
-import {getAllClasses} from "../../service/ClassesService";
+import {getAllClasses} from "../../service/classesService";
 
 
 function AddComponent(){
@@ -16,12 +16,16 @@ function AddComponent(){
 
     const handleSubmit = async (value) => {
 
+        console.log("---------value----------")
+        console.log(value)
         const student = {
             ...value,
             classes: JSON.parse(value.classes)
         }
 
         await addStudent(student);
+        console.log("++++++++++++++++++++++add+++++++++++++++++")
+        console.log(student)
         console.log("Thêm mới thành công");
         toast.success("Đã thêm học sinh thành công!");
         navigate("/students");
@@ -33,7 +37,7 @@ function AddComponent(){
             setListClass(() => [...list])
         }
         fetchData();
-    })
+    },[])
 
     const handleValidate = Yup.object({
        /* id: Yup.number()
@@ -48,12 +52,12 @@ function AddComponent(){
             .min(1, "Tuổi phải lớn hơn hoặc bằng 1")
             .integer("Tuổi phải là số nguyên")
     });
-    useEffect(() => {
+    /*useEffect(() => {
         return()=>{
             console.log("-------------add----------------------")
         }
     }, []);
-
+*/
     return(
         <>
             <Formik initialValues={student} onSubmit={handleSubmit} validationSchema={handleValidate}>
@@ -77,6 +81,7 @@ function AddComponent(){
                     <div>
                         <label>Lớp:</label>
                         <Field as ='select' name={'classes'}>
+                            <option value="">--------chọn--------</option>
                             {
                                 listClass.map((clas)=>(
                                     <option key={clas.id} value={JSON.stringify(clas)}>{clas.name}</option>

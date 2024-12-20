@@ -1,9 +1,10 @@
 import React, {useEffect, useRef, useState} from "react";
-import {getAllStudent, searchStudent} from "../../service/StudentService";
+import {searchStudent} from "../../service/studentService";
 import DeleteStudent from "./DeleteStudent";
-import {Link, Outlet} from "react-router-dom";
+import {Link} from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css'
-import {getAllClasses} from "../../service/ClassesService";
+import {getAllClasses} from "../../service/classesService";
+import {useSelector} from "react-redux";
 
 function ListComponent() {
 
@@ -12,6 +13,8 @@ function ListComponent() {
     const [isShowModal, setIsShowModal] = useState(false);
     const [deleteStudent, setDeleteStudent] = useState({});
     const [classes, setClasses] = useState([]);
+
+    const account = useSelector(state => state.user.account);
 
     const nameRef = useRef();
     const classIdRef = useRef();
@@ -76,7 +79,7 @@ function ListComponent() {
             <h1>Danh sách học sinh</h1>
 
             <p>
-                <Link to={"/students/add"}>Thêm học sinh</Link>
+                {account&&(account.role==="ADMIN")?(<Link to={"/students/add"}>Thêm học sinh</Link>):("")}
             </p>
 
             <form>
@@ -117,15 +120,16 @@ function ListComponent() {
                             <td>{student.age}</td>
                             <td>{student.classes.name}</td>
                             <td>
-                                <button onClick={() => (
+                                {account&&((account.role==="ADMIN")? (<button onClick={() => (
                                     handleShowModal(student))} className={'btn btn-sm btn-danger'}>Xoá
-                                </button>
+                                </button>):(""))}
                             </td>
                             <td>
-                                <Link to={'/students/detail/'+student.id} className="btn btn-sm btn-success">Chi tiết</Link>
+                                {account &&
+                                    <Link to={'/students/detail/' + student.id} className="btn btn-sm btn-success">Chi tiết</Link>}
                             </td>
                             <td>
-                                <Link to={'/students/edit/'+student.id} className="btn btn-sm btn-primary">Sửa</Link>
+                                {account&&((account.role==="ADMIN")?(<Link to={'/students/edit/'+student.id} className="btn btn-sm btn-primary">Sửa</Link>):(""))}
                             </td>
                         </tr>
                     ))
