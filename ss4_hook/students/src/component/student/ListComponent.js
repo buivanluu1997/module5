@@ -28,9 +28,9 @@ function ListComponent() {
         const fetchData = async () => {
             const searchName = nameRef.current.value;
             const classId = classIdRef.current.value;
-            const {data,total} = await searchStudent(searchName, classId, page, size);
+            const {data, total} = await searchStudent(searchName, classId, page, size);
             setListStudent(data);
-            setTotalPage(Math.ceil(total/size));
+            setTotalPage(Math.ceil(total / size));
         }
         fetchData();
     }, [isLoading, page])
@@ -51,9 +51,9 @@ function ListComponent() {
     const handleSearchName = async () => {
         const searchName = nameRef.current.value;
         const classId = classIdRef.current.value;
-        const {data,total} = await searchStudent(searchName, classId, page, size);
+        const {data, total} = await searchStudent(searchName, classId, page, size);
         setListStudent(data);
-        setTotalPage(Math.ceil(total/size));
+        setTotalPage(Math.ceil(total / size));
     }
 
     const handleShowModal = (student) => {
@@ -79,7 +79,7 @@ function ListComponent() {
             <h1>Danh sách học sinh</h1>
 
             <p>
-                {account&&(account.role==="ADMIN")?(<Link to={"/students/add"}>Thêm học sinh</Link>):("")}
+                {account && (account.role === "ADMIN") ? (<Link to={"/students/add"}>Thêm học sinh</Link>) : ("")}
             </p>
 
             <form>
@@ -87,14 +87,15 @@ function ListComponent() {
                 <input ref={nameRef} placeholder={'Nhập tên cần tìm'}/>
                 <label>Lớp</label>
                 <select ref={classIdRef}>
-                    <option  value={""}>----Chọn-----</option>
+                    <option value={""}>----Chọn-----</option>
                     {
                         classes.map((clas) => (
                             <option key={clas.id} value={clas.id}>{clas.name}</option>
                         ))
                     }
                 </select>
-                <button className={'btn btn-sm btn-secondary'} type={"button"} onClick={handleSearchName}>Tìm kiếm</button>
+                <button className={'btn btn-sm btn-secondary'} type={"button"} onClick={handleSearchName}>Tìm kiếm
+                </button>
             </form>
 
             <table className="table table-striped table-bordered table-hover">
@@ -105,9 +106,9 @@ function ListComponent() {
                     <th>Tên học sinh</th>
                     <th>Tuổi</th>
                     <th>Lớp học</th>
-                    <th>Xoá</th>
+                    {account.role === "ADMIN" && (<th>Xoá</th>)}
                     <th>Chi tiết</th>
-                    <th>Sửa</th>
+                    {account.role === "ADMIN" && (<th>Sửa</th>)}
                 </tr>
                 </thead>
                 <tbody>
@@ -119,18 +120,25 @@ function ListComponent() {
                             <td>{student.name}</td>
                             <td>{student.age}</td>
                             <td>{student.classes.name}</td>
+
+                            {account.role === "ADMIN" && (
+                                <td>
+                                    <button onClick={() => handleShowModal(student)}
+                                            className="btn btn-sm btn-danger">Xoá
+                                    </button>
+                                </td>
+                            )}
+
                             <td>
-                                {account&&((account.role==="ADMIN")? (<button onClick={() => (
-                                    handleShowModal(student))} className={'btn btn-sm btn-danger'}>Xoá
-                                </button>):(""))}
+                                <Link to={"/students/detail/" + student.id}
+                                      className="btn btn-sm btn-success">Chi tiết</Link>
                             </td>
-                            <td>
-                                {account &&
-                                    <Link to={'/students/detail/' + student.id} className="btn btn-sm btn-success">Chi tiết</Link>}
-                            </td>
-                            <td>
-                                {account&&((account.role==="ADMIN")?(<Link to={'/students/edit/'+student.id} className="btn btn-sm btn-primary">Sửa</Link>):(""))}
-                            </td>
+                            {account.role === "ADMIN" && (
+                                <td>
+                                    <Link to={"/students/edit/" + student.id}
+                                          className="btn btn-sm btn-primary">Sửa</Link>
+                                </td>
+                            )}
                         </tr>
                     ))
                 }
@@ -140,7 +148,9 @@ function ListComponent() {
 
             {/* Phân trang */}
             <div className="pagination">
-                <button className="btn btn-sm btn-secondary" disabled={page === 1} onClick={() => handlePageChange(page - 1)}>Previous</button>
+                <button className="btn btn-sm btn-secondary" disabled={page === 1}
+                        onClick={() => handlePageChange(page - 1)}>Previous
+                </button>
                 {[...Array(totalPage)].map((_, index) => (
                     <button
                         key={index + 1}
@@ -150,12 +160,14 @@ function ListComponent() {
                         {index + 1}
                     </button>
                 ))}
-                <button className="btn btn-sm btn-secondary" disabled={page === totalPage} onClick={() => handlePageChange(page + 1)}>Next</button>
+                <button className="btn btn-sm btn-secondary" disabled={page === totalPage}
+                        onClick={() => handlePageChange(page + 1)}>Next
+                </button>
             </div>
 
 
             <DeleteStudent isShowModal={isShowModal} deleteStudent={deleteStudent}
-                           handleCloseModal={handleCloseModal}  handleIsLoading={handleIsLoading}/>
+                           handleCloseModal={handleCloseModal} handleIsLoading={handleIsLoading}/>
 
         </>
     )

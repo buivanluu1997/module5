@@ -13,8 +13,8 @@
       "name": "Nguyen An",
       "age": 17,
       "classes": {
-        "id": 4,
-        "name": "12A4"
+        "id": 2,
+        "name": "12A2"
       },
       "id": 4
     },
@@ -37,22 +37,13 @@
       "id": 6
     },
     {
-      "name": "Bùi Văn Lưu",
-      "age": 27,
-      "classes": {
-        "id": 2,
-        "name": "12A2"
-      },
-      "id": 7
-    },
-    {
-      "name": "Bùi Văn Lưu",
-      "age": 28,
+      "name": "Minh Phương",
+      "age": 17,
       "classes": {
         "id": 1,
         "name": "12A1"
       },
-      "id": 8
+      "id": 9
     }
   ],
   "classes": [

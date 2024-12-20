@@ -22,7 +22,7 @@ function LoginComponent(){
         }
         console.log(loginInfo)
         //Call API để check login => kiểm tra có trong DB => ok
-        const account = await checkLogin(loginInfo);
+        /*const account = await checkLogin(loginInfo);
         console.log("==================================")
         console.log(account)
         if (account != null) {
@@ -31,7 +31,19 @@ function LoginComponent(){
             toast.success("Đăng nhập thành công")
         }else {
             toast.error("Đăng nhập thất bại")
+        }*/
+
+
+        //redux-thunk
+        let isLoginSuccess = await checkLogin(loginInfo);
+        if(isLoginSuccess){
+            dispatch(login(loginInfo))
+            toast.success("Đăng nhập thành công");
+            navigate("/students");
+        } else {
+            toast.error("Đăng nhập thất bại");
         }
+
     }
 
 
