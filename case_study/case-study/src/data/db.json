@@ -1,0 +1,122 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "Nguyễn Trung Dũng",
+      "gender": 1,
+      "phone": "0987878787",
+      "address": "Đà Nẵng"
+    },
+    {
+      "id": 2,
+      "name": "Hoàng Khánh Trang",
+      "gender": 0,
+      "phone": "0987878787",
+      "address": "Huế"
+    }
+  ],
+  "serviceTypes": [
+    {
+      "id": 1,
+      "name": "Thuê villa"
+    },
+    {
+      "id": 2,
+      "name": "Thuê phòng"
+    }
+  ],
+  "contracts": [
+    {
+      "id": 1,
+      "codeContract": "HDVilla001",
+      "startDate": "2024-12-11",
+      "endDate": "2024-12-12",
+      "deposit": 1000000,
+      "totalMoney": 3000000,
+      "serviceTypes": {
+        "id": 1,
+        "name": "Thuê villa"
+      },
+      "customers": {
+        "id": 1,
+        "name": "Nguyễn Trung Dũng",
+        "gender": 1,
+        "phone": "0987878787",
+        "address": "Đà Nẵng"
+      }
+    },
+    {
+      "id": 2,
+      "codeContract": "HDP001",
+      "startDate": "2024-12-23",
+      "endDate": "2024-12-25",
+      "deposit": 200000,
+      "totalMoney": 1000000,
+      "serviceTypes": {
+        "id": 2,
+        "name": "Thuê phòng"
+      },
+      "customers": {
+        "id": 2,
+        "name": "Hoàng Khánh Trang",
+        "gender": 0,
+        "phone": "0988886666",
+        "address": "Huế"
+      }
+    },
+    {
+      "codeContract": "HDP004",
+      "startDate": "2024-12-28",
+      "endDate": "2024-12-29",
+      "deposit": 200000,
+      "totalMoney": 1000000,
+      "serviceTypes": {
+        "id": 2,
+        "name": "Thuê phòng"
+      },
+      "customers": {
+        "name": "Nguyễn Hoàng Anh",
+        "gender": 0,
+        "phone": "0988555444",
+        "address": "Quảng Nam"
+      },
+      "id": 3
+    },
+    {
+      "codeContract": "HDVilla006",
+      "startDate": "2024-12-22",
+      "endDate": "2024-12-23",
+      "deposit": 1000000,
+      "totalMoney": 4000000,
+      "serviceTypes": {
+        "id": 1,
+        "name": "Thuê villa"
+      },
+      "customers": {
+        "name": "Bùi Văn Lưu",
+        "gender": 1,
+        "phone": "0988555444",
+        "address": "Huế"
+      },
+      "id": 4
+    },
+    {
+      "codeContract": "HDVilla008",
+      "startDate": "2024-12-23",
+      "endDate": "2024-12-24",
+      "deposit": 2000000,
+      "totalMoney": 8000000,
+      "serviceTypes": {
+        "id": 1,
+        "name": "Thuê villa"
+      },
+      "customers": {
+        "name": "Nguyễn Khánh Huyền",
+        "gender": 0,
+        "phone": "0989898988",
+        "address": "Huế"
+      },
+      "id": 6
+    }
+  ]
+}
