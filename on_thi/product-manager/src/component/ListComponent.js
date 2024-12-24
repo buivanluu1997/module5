@@ -108,6 +108,7 @@ function ListComponent() {
                     <th>Hãng sản xuất</th>
                     <th>Ngày nhập</th>
                     <th>Giá sản phẩm</th>
+                    <th>Chi tiết</th>
                     <th>Xoá</th>
                     <th>Sửa</th>
                 </tr>
@@ -123,12 +124,15 @@ function ListComponent() {
                             <td>{formatDate(product.startDate)}</td>
                             <td>{product.price} Vnđ</td>
                             <td>
+                                <Link to={`/products/detail/${product.id}`} className="btn btn-sm btn-success">Chi tiết</Link>
+                            </td>
+                            <td>
                                 <button onClick={() => (
                                     handleShowModal(product))} className={'btn btn-sm btn-danger'}>Xoá
                                 </button>
                             </td>
                             <td>
-                                <Link to={`/products/update/${product.id}`} className="btn btn-sm btn-primary" >Sửa</Link>
+                                <Link to={`/products/update/${product.id}`} className="btn btn-sm btn-primary">Sửa</Link>
                             </td>
                         </tr>
                     ))

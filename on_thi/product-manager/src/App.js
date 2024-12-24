@@ -9,6 +9,7 @@ import HomeComponent from "./component/HomeComponent";
 import AddComponent from "./component/AddComponent";
 import {ToastContainer} from "react-toastify";
 import UpdateComponent from "./component/UpdateComponent";
+import DetailComponent from "./component/DetailComponent";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/" element={<HomeComponent/>}/>
                 <Route path="/products/add" element={<AddComponent/>}/>
                 <Route path="/products/update/:id" element={<UpdateComponent/>}/>
+                <Route path="/products/detail/:id" element={<DetailComponent/>}/>
             </Routes>
         </>
     );
