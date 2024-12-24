@@ -18,6 +18,7 @@ function EditComponent(){
             console.log(id)
             setContracts({
                 ...contractDetail,
+                serviceTypes: JSON.stringify(contractDetail.serviceTypes),
                 customers: {
                     ...contractDetail.customers,
                     gender: contractDetail.customers.gender.toString()
@@ -56,8 +57,7 @@ function EditComponent(){
         codeContract: Yup.string()
             .required("Mã hợp đồng không được để trống"),
         startDate: Yup.date()
-            .required("Ngày bắt đầu không được để trống")
-            .min(new Date(), "Ngày bắt đầu phải từ hôm nay trở đi"),
+            .required("Ngày bắt đầu không được để trống"),
         endDate: Yup.date()
             .required("Ngày kết thúc không được để trống")
             .min(Yup.ref('startDate'), "Ngày kết thúc phải sau ngày bắt đầu"),
@@ -136,7 +136,6 @@ function EditComponent(){
                         <div className="mb-3">
                             <label className="form-label">Loại dịch vụ:</label>
                             <Field as="select" name="serviceTypes" className="form-select">
-                                <option value="">---Chọn---</option>
                                 {serviceTypeList.map((serviceType) => (
                                     <option key={serviceType.id} value={JSON.stringify(serviceType)}>
                                         {serviceType.name}

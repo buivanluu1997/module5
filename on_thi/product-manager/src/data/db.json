@@ -1,0 +1,62 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Điện thoại"
+    },
+    {
+      "id": 2,
+      "name": "Laptop"
+    },
+    {
+      "id": 3,
+      "name": "Tivi"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "IPhone 15 promax",
+      "price": 20000,
+      "manufacturer": "IPhone",
+      "startDate": "2024-12-11",
+      "categories": {
+        "id": 1,
+        "name": "Điện thoại"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Asus VivoBook",
+      "price": 160000,
+      "manufacturer": "Asus",
+      "startDate": "2024-12-01",
+      "categories": {
+        "id": 2,
+        "name": "Laptop"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Sony 55 inch",
+      "price": 900,
+      "manufacturer": "Sony",
+      "startDate": "2024-10-11",
+      "categories": {
+        "id": 3,
+        "name": "Tivi"
+      }
+    },
+    {
+      "name": "Dell 1524",
+      "price": 19000000,
+      "manufacturer": "Delll",
+      "startDate": "2024-12-13",
+      "categories": {
+        "id": 2,
+        "name": "Laptop"
+      },
+      "id": 4
+    }
+  ]
+}
