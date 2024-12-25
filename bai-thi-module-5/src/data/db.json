@@ -60,20 +60,6 @@
       "id": 3
     },
     {
-      "code": "PROD-0004",
-      "name": "thuốc Alexan",
-      "describe": "thuốc",
-      "categories": {
-        "id": 3,
-        "name": "Dược phẩm",
-        "describe": "Thuốc của Mỹ sản xuất"
-      },
-      "price": 400,
-      "quantity": "15",
-      "startDate": "2024-12-24",
-      "id": 4
-    },
-    {
       "code": "PROD-0005",
       "name": "Xê xủi",
       "describe": "bổ sung vitamin C",
