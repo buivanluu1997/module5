@@ -1,0 +1,41 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Vip"
+    },
+    {
+      "id": 2,
+      "name": "Thường"
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "name": "Nguyen Anh",
+      "categories": {
+        "id": 1,
+        "name": "Vip"
+      },
+      "birthDay": "1995-2-14"
+    },
+    {
+      "id": 2,
+      "name": "Nguyen Van",
+      "categories": {
+        "id": 2,
+        "name": "Thường"
+      },
+      "birthDay": "1993-2-24"
+    },
+    {
+      "id": 3,
+      "name": "Tran Anh Huy",
+      "categories": {
+        "id": 2,
+        "name": "Thường"
+      },
+      "birthDay": "1991-5-24"
+    }
+  ]
+}

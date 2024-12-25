@@ -9,9 +9,11 @@ function ListComponent(){
     const [isLoading, setIsLoading] = useState(false);
     const [serviceTypeList, setServiceTypeList] = useState([]);
     const [customerList, setCustomerList] = useState([]);
+
     const [page, setPage] = useState(1);
     const [size, setSize] = useState(2);
     const [totalPage, setTotalPage] = useState(0);
+
     const [isShowModal, setIsShowModal] = useState(false);
     const [deleteContract, setDeleteContract] = useState({});
     const nameRef = useRef();
