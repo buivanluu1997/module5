@@ -72,6 +72,20 @@
       "quantity": "25",
       "startDate": "2024-12-24",
       "id": 5
+    },
+    {
+      "code": "PROD-0009",
+      "name": "fdggd",
+      "describe": "gdgdfgg",
+      "categories": {
+        "id": 1,
+        "name": "Thực phẩm chức năng",
+        "describe": "thực phẩm chức năng cho người lớn trên 18 tuổi"
+      },
+      "price": 4,
+      "quantity": "1222222222222222222222222222222222222222222222",
+      "startDate": "2024-12-25",
+      "id": 6
     }
   ]
 }
